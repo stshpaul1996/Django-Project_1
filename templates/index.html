@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-5 ">
+        <div class="row">
+            <div class="col-5">
+                <h2 class="text-center">REGISTER YOUR ENTRY</h1>
+                <form method="POST" p="3">
+                    {% csrf_token %}
+                    <label>FULL NAME</label>
+                    <input type="text" class="form-control" name="name"/>
+                    <label>EMAIL</label>
+                    <input type="email" class="form-control" name="email"/>
+                    <label>MOBILE</label>
+                    <input type="number" class="form-control" name="mobile" />
+                    <label>ADDRESS</label>
+                    <input type="text" cols=5 class="form-control" name="address"/>
+                    <div class="mt-3 text-center">
+                        <input type='submit' value="SUBMIT" class="btn btn-outline-success" />
+                        <input type='reset' value="RESET" class="btn btn-outline-danger"/>
+                    </div>
+                </form>
+            </div>
+            <div class="col-7" >
+                <table class= "table table-boarderd">
+                    <thead>
+                        <tr>
+                            <th>FULLNAME</th>
+                            <th>EMAIL</th>
+                            <th>MOBILE</th>
+                            <th>ADDRESS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data %}
+                        <tr>
+                        <td>{{i.fullname}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.mobile}}</td>
+                        <td>{{i.address}}</td>
+
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>    
